@@ -1469,7 +1469,7 @@ angular
                 url: "/",
                 templateUrl: "views/landing.html",
                 data: { pageTitle: 'Landing page', specialClass: 'landing-page' },
-                resolve: {
+                /*resolve: {
                     loadPlugin: function ($ocLazyLoad) {
                         return $ocLazyLoad.load([
                             {
@@ -1477,7 +1477,7 @@ angular
                             }
                         ]);
                     }
-                }
+                }*/
             })
             .state('outlook', {
                 url: "/outlook",
