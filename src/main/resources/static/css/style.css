@@ -8551,3 +8551,11 @@ body.md-skin {
     margin: 0;
   }
 }
+
+#inSlider.fa.fa-chevron-right {
+  padding-top: 80px;
+}
+
+#inSlider.fa.fa-chevron-left {
+  padding-top: 80px;
+}
