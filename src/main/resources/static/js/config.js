@@ -9,7 +9,7 @@
 
 angular
     .module('inspinia')
-    .config(['$stateProvider','$urlRouterProvider',/*'$ocLazyLoadProvider',*/'IdleProvider','KeepaliveProvider',function config($stateProvider, $urlRouterProvider, /*$ocLazyLoadProvider,*/ IdleProvider, KeepaliveProvider) {
+    .config(['$stateProvider','$urlRouterProvider','IdleProvider','KeepaliveProvider',function config($stateProvider, $urlRouterProvider, IdleProvider, KeepaliveProvider) {
 
         // Configure Idle settings
         IdleProvider.idle(5); // in seconds
@@ -24,7 +24,7 @@ angular
 
         $stateProvider
 
-            .state('dashboards', {
+ /*           .state('dashboards', {
                 abstract: true,
                 url: "/dashboards",
                 templateUrl: "views/common/content.html",
@@ -1464,11 +1464,11 @@ angular
                     }
                 }
 
-            })
+            })*/
             .state('landing', {
                 url: "/",
                 templateUrl: "views/landing.html",
-                data: { pageTitle: 'Landing page', specialClass: 'landing-page' },
+                data: { pageTitle: 'Landing page', specialClass: 'landing-page' }
                 /*resolve: {
                     loadPlugin: function ($ocLazyLoad) {
                         return $ocLazyLoad.load([
@@ -1479,7 +1479,7 @@ angular
                     }
                 }*/
             })
-            .state('outlook', {
+/*            .state('outlook', {
                 url: "/outlook",
                 templateUrl: "views/outlook.html",
                 data: { pageTitle: 'Outlook view', specialClass: 'fixed-sidebar' }
@@ -1488,7 +1488,7 @@ angular
                 url: "/off_canvas",
                 templateUrl: "views/off_canvas.html",
                 data: { pageTitle: 'Off canvas menu', specialClass: 'canvas-menu' }
-            });
+            });*/
 
     }])
     .run(function($rootScope, $state) {
