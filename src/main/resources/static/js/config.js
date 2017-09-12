@@ -9,7 +9,7 @@
 
 angular
     .module('inspinia')
-    .config(['$stateProvider','$urlRouterProvider','$ocLazyLoadProvider','IdleProvider','KeepaliveProvider',function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdleProvider, KeepaliveProvider) {
+    .config(['$stateProvider','$urlRouterProvider',/*'$ocLazyLoadProvider',*/'IdleProvider','KeepaliveProvider',function config($stateProvider, $urlRouterProvider, /*$ocLazyLoadProvider,*/ IdleProvider, KeepaliveProvider) {
 
         // Configure Idle settings
         IdleProvider.idle(5); // in seconds
@@ -17,10 +17,10 @@ angular
 
         $urlRouterProvider.otherwise("/");
 
-        $ocLazyLoadProvider.config({
+/*        $ocLazyLoadProvider.config({
             // Set to true if you want to see what and when is dynamically loaded
             debug: false
-        });
+        });*/
 
         $stateProvider
 
