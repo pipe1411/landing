@@ -6999,7 +6999,7 @@ body.landing-page {
   width: 100%;
 }
 .landing-page .header-back.one {
-  background: url('../img/landing/buque.jpg') 50% 0 no-repeat;
+  background: url('../img/landing/nosotros.jpg') 50% 0 no-repeat;
 }
 .landing-page .header-back.two {
   background: url('../img/landing/sucul.jpg') 50% 0 no-repeat;
@@ -8552,10 +8552,7 @@ body.md-skin {
   }
 }
 
-#inSlider.fa.fa-chevron-right {
+.myarrow{
   padding-top: 80px;
 }
 
-#inSlider.fa.fa-chevron-left {
-  padding-top: 80px;
-}
