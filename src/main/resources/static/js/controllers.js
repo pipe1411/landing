@@ -56,7 +56,10 @@
  * Contains several global data used in different view
  *
  */
-function MainCtrl($http) {
+function MainCtrl($scope,$http,$uibModal) {
+
+
+
 
     /**
      * countries - Used as duallistbox in form advanced view
@@ -1507,7 +1510,34 @@ function widgetFlotChart() {
  * modalDemoCtrl - Controller used to run modal view
  * used in Basic form view
  */
-function modalDemoCtrl($scope, $uibModal) {
+function modalDemoCtrl($scope, $uibModal, $http) {
+    $scope.postComment = {};
+
+    $scope.postModal = function () {
+        $uibModal.open({
+            templateUrl: 'views/post.html',
+            controller: ModalInstanceCtrl,
+            size: 'sm',
+            resolve : {
+                postComment : function() {
+                    return $scope.postComment;
+                }
+            }
+        }).result.then(function (result) {
+            $scope.postComment = result;
+            $http
+                .post('postComment',$scope.postComment)
+                .success(function (data) {
+                    console.log("success")
+                })
+                .error(function (data, status) {
+                    console.log(status);
+                });
+            $scope.$apply();
+
+        });
+    };
+
 
     $scope.open = function () {
 
@@ -1549,69 +1579,31 @@ function modalDemoCtrl($scope, $uibModal) {
     };
 };
 
-function ModalInstanceCtrl ($scope, $uibModalInstance) {
+function ModalInstanceCtrl ($scope, $uibModalInstance,postComment) {
+    $scope.postComment = postComment;
+
+    $scope.name;
+    $scope.message;
+
 
     $scope.ok = function () {
-        $uibModalInstance.close();
+        $scope.postComment.name = $scope.name;
+        $scope.postComment.message = $scope.message;
+        $scope.postComment.date = new Date();
+        $uibModalInstance.close($scope.postComment);
     };
+
 
     $scope.cancel = function () {
         $uibModalInstance.dismiss('cancel');
     };
 
 
-    $scope.states = [
-        'Alabama',
-        'Alaska',
-        'Arizona',
-        'Arkansas',
-        'California',
-        'Colorado',
-        'Connecticut',
-        'Delaware',
-        'Florida',
-        'Georgia',
-        'Hawaii',
-        'Idaho',
-        'Illinois',
-        'Indiana',
-        'Iowa',
-        'Kansas',
-        'Kentucky',
-        'Louisiana',
-        'Maine',
-        'Maryland',
-        'Massachusetts',
-        'Michigan',
-        'Minnesota',
-        'Mississippi',
-        'Missouri',
-        'Montana',
-        'Nebraska',
-        'Nevada',
-        'New Hampshire',
-        'New Jersey',
-        'New Mexico',
-        'New York',
-        'North Carolina',
-        'North Dakota',
-        'Ohio',
-        'Oklahoma',
-        'Oregon',
-        'Pennsylvania',
-        'Rhode Island',
-        'South Carolina',
-        'South Dakota',
-        'Tennessee',
-        'Texas',
-        'Utah',
-        'Vermont',
-        'Virginia',
-        'Washington',
-        'West Virginia',
-        'Wisconsin',
-        'Wyoming'
-    ];
+
+
+
+
+
 
 };
 

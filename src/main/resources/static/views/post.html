@@ -1,0 +1,33 @@
+<div class="inmodal">
+    <div class="modal-header">
+        <i class="fa fa-person modal-icon"></i>
+        <h1 class="modal-title"> Post a Comment </h1>
+        <!--        <small class="font-bold">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</small>-->
+    </div>
+    <div class="modal-body">
+
+
+        <form role="form" ng-submit="ok()" class="form-horizontal">
+            <div class="form-group">
+                <div class="col-sm-12"><input type="text" placeholder="Name" class="form-control" name="name" ng-model="name"></div>
+            </div>
+
+            <div class="hr-line-dashed"></div>
+
+            <span class="help-block m-b-none"></span>
+            <div class="form-group">
+                <div class="col-sm-12"><input type="text" placeholder="Write a message!" class="form-control input-lg" ng-model="message"></div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-white" ng-click="cancel()"> Cancel </button>
+                <button type="submit" class="btn btn-primary"> Post </button>
+            </div>
+
+        </form>
+
+
+    </div>
+
+</div>
+
