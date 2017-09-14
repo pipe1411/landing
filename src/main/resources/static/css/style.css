@@ -5057,6 +5057,7 @@ a.compose-mail {
 .feed-element,
 .media-body {
   overflow: hidden;
+
 }
 .feed-element > .pull-left {
   margin-right: 10px;
@@ -7277,6 +7278,8 @@ body.landing-page {
   padding: 10px 20px;
   font-weight: 600;
 }
+
+
 .landing-page .btn-primary:hover,
 .landing-page .btn-primary:focus,
 .landing-page .btn-primary:active,
@@ -8554,6 +8557,11 @@ body.md-skin {
 
 .myarrow{
   padding-top: 225px;
+}
+
+.avat {
+  background-color: #1ab394;
+  color: #FFFFFF;
 }
 
 

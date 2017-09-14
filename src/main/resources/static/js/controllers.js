@@ -1511,7 +1511,25 @@ function widgetFlotChart() {
  * used in Basic form view
  */
 function modalDemoCtrl($scope, $uibModal, $http) {
+    $scope.comments = [];
+
+    var getComments = function () {
+        $http.get('getComments').then(function (response) {
+            $scope.comments = response.data;
+            /*            $scope.comments = response.data;
+             $scope.chunkedData = chunk($scope.comments, 3);*/
+        }, function() {
+            console.log("Something happened when retrieving weddings");
+        });
+    };
+
+    getComments();
+
+
     $scope.postComment = {};
+
+    
+
 
     $scope.postModal = function () {
         $uibModal.open({
@@ -1524,11 +1542,15 @@ function modalDemoCtrl($scope, $uibModal, $http) {
                 }
             }
         }).result.then(function (result) {
+            $scope.postComment = null;
+            $scope.comments.push(result);
             $scope.postComment = result;
             $http
                 .post('postComment',$scope.postComment)
                 .success(function (data) {
-                    console.log("success")
+                    console.log("success");
+
+                    console.log($scope.comments);
                 })
                 .error(function (data, status) {
                     console.log(status);
