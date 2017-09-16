@@ -8559,4 +8559,9 @@ body.md-skin {
   color: #FFFFFF;
 }
 
+.scrollable {
+    height: 260px; /* or any value */
+    overflow-y: auto;
+}
+
 
