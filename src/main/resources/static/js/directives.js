@@ -1,37 +1,4 @@
-/**
- * INSPINIA - Responsive Admin Theme
- *
- * Main directives.js file
- * Define directives for used plugin
- *
- *
- * Functions (directives)
- *  - sideNavigation
- *  - iboxTools
- *  - minimalizaSidebar
- *  - vectorMap
- *  - sparkline
- *  - icheck
- *  - ionRangeSlider
- *  - dropZone
- *  - responsiveVideo
- *  - chatSlimScroll
- *  - customValid
- *  - fullScroll
- *  - closeOffCanvas
- *  - clockPicker
- *  - landingScrollspy
- *  - fitHeight
- *  - iboxToolsFullScreen
- *  - slimScroll
- *  - truncate
- *  - touchSpin
- *  - markdownEditor
- *  - resizeable
- *  - bootstrapTagsinput
- *  - passwordMeter
- *
- */
+
 
 
 /**
