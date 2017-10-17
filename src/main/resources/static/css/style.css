@@ -728,8 +728,8 @@ fieldset[disabled] .btn-success.active {
   border-color: #1f90d8;
 }
 .btn-info {
-  background-color: #23c6c8;
-  border-color: #23c6c8;
+  background-color: #1ab394;
+  border-color: #1ab394;
   color: #FFFFFF;
 }
 .btn-info:hover,
@@ -8574,7 +8574,7 @@ body.md-skin {
 }
 
 .index-intro .jumbotron {
-  padding: 120px 60px;
+  padding: 70px 60px;
   margin:0px;
   background-image:url("../img/landing/guata3.gif");
   background-size: cover;
@@ -8603,6 +8603,10 @@ body.md-skin {
 
 .heading-title {
   margin-bottom:5px;
+}
+
+.comment-section {
+  border-color:black;
 }
 
 
