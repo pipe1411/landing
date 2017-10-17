@@ -8582,6 +8582,17 @@ body.md-skin {
   border-radius: 0px;
 }
 
+@media (max-width: 767px) {
+  .index-intro .jumbotron{
+    padding: 70px 60px;
+    margin:0px;
+    background-image:url("../img/landing/guatam.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 0px;
+  }
+}
+
 .main-container {
   padding-top:66px;
 }
@@ -8605,9 +8616,6 @@ body.md-skin {
   margin-bottom:5px;
 }
 
-.comment-section {
-  border-color:black;
-}
 
 
 
