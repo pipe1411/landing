@@ -8574,8 +8574,9 @@ body.md-skin {
 }
 
 .index-intro .jumbotron {
-  padding: 70px 60px;
+  padding: 120px 60px;
   margin:0px;
+  margin-bottom: -59px;
   background-image:url("../img/landing/guata3.gif");
   background-size: cover;
   background-repeat: no-repeat;
