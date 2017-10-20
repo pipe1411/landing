@@ -8591,6 +8591,7 @@ body.md-skin {
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 0px;
+      margin-top:-12px;
   }
 }
 
