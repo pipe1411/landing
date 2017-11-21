@@ -8618,6 +8618,12 @@ body.md-skin {
   margin-bottom:5px;
 }
 
+.landing-page .btn-circle:hover {
+  background-color: #179d82;
+  border-color: #179d82;
+  color: #FFFFFF;
+}
+
 
 
 
