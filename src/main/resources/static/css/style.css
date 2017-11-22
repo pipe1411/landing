@@ -2790,7 +2790,7 @@ a.forum-item-title:hover {
 .vertical-timeline-content {
   position: relative;
   margin-left: 60px;
-  background: white;
+  background: #f4f4f4;
   border-radius: 0.25em;
   padding: 1em;
 }
@@ -7119,6 +7119,11 @@ body.landing-page {
 .landing-page .features small {
   color: #1ab394;
 }
+
+.landing-page .features .travel-accomodation small {
+  font-size: xx-large;
+}
+
 .landing-page .features h2 {
   font-size: 18px;
   margin-top: 5px;
@@ -8622,6 +8627,11 @@ body.md-skin {
   background-color: #179d82;
   border-color: #179d82;
   color: #FFFFFF;
+}
+
+
+#travel {
+  padding-bottom: 40px;
 }
 
 
