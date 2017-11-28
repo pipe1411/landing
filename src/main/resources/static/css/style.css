@@ -8605,9 +8605,9 @@ body.md-skin {
 }
 
 .index-intro .jumbotron h1 {
- font-size: 50px;
-  color: white;
-  font-family: 'Pacifico', cursive;
+    font-size: 50px;
+    color: white;
+    font-family: 'Pinyon Script', cursive;
 }
 
 .index-intro .jumbotron h2 {
@@ -8629,7 +8629,6 @@ body.md-skin {
   border-color: #179d82;
   color: #FFFFFF;
 }
-
 
 #travel {
   padding-bottom: 40px;
