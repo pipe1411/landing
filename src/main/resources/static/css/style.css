@@ -7244,7 +7244,7 @@ body.landing-page {
   position: relative;
   height: 120px;
   padding: 20px;
-  background: #FFFFFF;
+  background: #f4f4f4;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
@@ -7256,7 +7256,7 @@ body.landing-page {
   position: absolute;
   border-style: solid;
   border-width: 15px 14px 0;
-  border-color: #FFFFFF transparent;
+  border-color: #f4f4f4 transparent;
   display: block;
   width: 0;
   z-index: 1;
