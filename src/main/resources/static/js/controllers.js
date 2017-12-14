@@ -1525,17 +1525,13 @@ function modalDemoCtrl($scope, $uibModal, $http) {
 
     getComments();
 
-
     $scope.postComment = {};
-
-    
-
 
     $scope.postModal = function () {
         $uibModal.open({
             templateUrl: 'views/post.html',
             controller: ModalInstanceCtrl,
-            size: 'sm',
+            size: 'lg',
             resolve : {
                 postComment : function() {
                     return $scope.postComment;
@@ -1559,6 +1555,37 @@ function modalDemoCtrl($scope, $uibModal, $http) {
 
         });
     };
+
+    $scope.surveyData = {};
+    $scope.survey = function () {
+        $uibModal.open({
+            templateUrl: 'views/form_wizard.html',
+            controller: ModalSurveyCtrl,
+            size: 'lg',
+            resolve : {
+                surveyData : function() {
+                    return $scope.surveyData;
+                }
+            }
+        }).result.then(function (result) {
+            $scope.surveyData = null;
+            //$scope.comments.push(result);
+            $scope.surveyData = result;
+            /*$http
+                .post('postComment',$scope.postComment)
+                .success(function (data) {
+                    console.log("success");
+
+                    console.log($scope.comments);
+                })
+                .error(function (data, status) {
+                    console.log(status);
+                });*/
+            $scope.$apply();
+
+        });
+    };
+
 
 
     $scope.open = function () {
@@ -1601,6 +1628,26 @@ function modalDemoCtrl($scope, $uibModal, $http) {
     };
 };
 
+
+function ModalSurveyCtrl ($scope, $uibModalInstance,surveyData) {
+    $scope.surveyData = surveyData;
+
+    $scope.name;
+    $scope.message;
+
+
+    $scope.ok = function () {
+/*        $scope.postComment.name = $scope.name;
+        $scope.postComment.message = $scope.message;
+        $scope.postComment.date = new Date();*/
+        $uibModalInstance.close($scope.postComment);
+    };
+
+    $scope.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
+    };
+};
+
 function ModalInstanceCtrl ($scope, $uibModalInstance,postComment) {
     $scope.postComment = postComment;
 
@@ -1615,18 +1662,9 @@ function ModalInstanceCtrl ($scope, $uibModalInstance,postComment) {
         $uibModalInstance.close($scope.postComment);
     };
 
-
     $scope.cancel = function () {
         $uibModalInstance.dismiss('cancel');
     };
-
-
-
-
-
-
-
-
 };
 
 /**
@@ -1693,6 +1731,8 @@ function wizardCtrl($scope, $rootScope) {
     $scope.processForm = function() {
         alert('Wizard completed');
     };
+
+    $scope.value = 10;
 
 }
 
