@@ -136,11 +136,16 @@
                                     </div>
 
                                 </fieldset>
-                                <h1>Profile</h1>
+                                <h1>Attending?</h1>
                                 <fieldset>
-                                    <h2>Profile Information</h2>
+                                    <h2>Will you be attending our wedding in Colombia?/Vas a asistir a nuestra boda en Colombia?</h2>
                                     <div class="row">
-                                        <div class="col-lg-6">
+
+                                        <div class="col-sm-12">
+                                            <div class="i-checks"><label> <input type="radio" checked="" value="option1" name="a"> <i></i> Yes I Do!/Si voy a ir! </label></div>
+                                            <div class="i-checks"><label> <input type="radio" value="option2" name="a"> <i></i>No I am Not!/No voy a ir </label></div>
+                                        </div>
+                                        <!--<div class="col-lg-6">
                                             <div class="form-group">
                                                 <label>First name *</label>
                                                 <input id="names" name="name" type="text" class="form-control required">
@@ -159,7 +164,7 @@
                                                 <label>Address *</label>
                                                 <input id="address" name="address" type="text" class="form-control">
                                             </div>
-                                        </div>
+                                        </div>-->
                                     </div>
                                 </fieldset>
 
@@ -262,6 +267,15 @@
                     equalTo: "#password"
                 }
             }
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
         });
     });
 </script>
