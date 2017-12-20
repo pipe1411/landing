@@ -24,7 +24,7 @@ angular
 
         $stateProvider
 
- /*           .state('dashboards', {
+        /*           .state('dashboards', {
                 abstract: true,
                 url: "/dashboards",
                 templateUrl: "views/common/content.html",
@@ -499,7 +499,7 @@ angular
                     }
                 }
             })
-            .state('forms.wizard', {
+            .state('landing.wizard', {
                 url: "/wizard",
                 templateUrl: "views/form_wizard.html",
                 controller: wizardCtrl,
@@ -514,17 +514,17 @@ angular
                     }
                 }
             })
-            .state('forms.wizard.step_one', {
+            .state('landing.wizard.step_one', {
                 url: '/step_one',
                 templateUrl: 'views/wizard/step_one.html',
                 data: { pageTitle: 'Wizard form' }
             })
-            .state('forms.wizard.step_two', {
+            .state('landing.wizard.step_two', {
                 url: '/step_two',
                 templateUrl: 'views/wizard/step_two.html',
                 data: { pageTitle: 'Wizard form' }
             })
-            .state('forms.wizard.step_three', {
+            .state('landing.wizard.step_three', {
                 url: '/step_three',
                 templateUrl: 'views/wizard/step_three.html',
                 data: { pageTitle: 'Wizard form' }

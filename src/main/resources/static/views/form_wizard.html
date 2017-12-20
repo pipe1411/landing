@@ -1,196 +1,175 @@
-<!--
-<div class="row wrapper border-bottom white-bg page-heading">
-    <div class="col-lg-10">
-        <h2>Wizard</h2>
-        <ol class="breadcrumb">
-            <li>
-                <a href="index.html">Home</a>
-            </li>
-            <li>
-                <a>Forms</a>
-            </li>
-            <li class="active">
-                <strong>Wizard</strong>
-            </li>
-        </ol>
-    </div>
-    <div class="col-lg-2">
 
-    </div>
-</div>
-<div class="wrapper wrapper-content animated fadeInRight">
-
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="jumbotron">
-                <h3>Angular Wizard</h3>
-
-                <p>It is example of simple wizard build with Angular plugin - ui-router based on diferent state view. You can use standard angular validation also with this form.</p>
-
-                </p>
-            </div>
-        </div>
-
-    </div>
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="ibox">
-                <div class="ibox-title">
-                    <h5>Angular wizard</h5>
-
-                    <div ibox-tools></div>
-                </div>
-                <div class="ibox-content wizard">
-                    <h2>
-                        Wizard
-                    </h2>
-
-                    <p>
-                        This example show how to use ui-router to create wizard like form.
-                        <br/>
-                        <strong>Data from ng-model.</strong><br/>
-                        &lt;!&ndash;<code>{{ formData}}</code>&ndash;&gt;
-                    </p>
-
-                    <div class="steps clearfix">
-                        <ul>
-
-                            <li ui-sref-active="current">
-                                <a ui-sref=".step_one" class="btn-default"><span>1</span> Account information</a>
-                            </li>
-                            <li ui-sref-active="current">
-                                <a ui-sref=".step_two" class="btn-default"><span>2</span> Profile Information</a>
-                            </li>
-                            <li ui-sref-active="current">
-                                <a ui-sref=".step_three" class="btn-default"><span>3</span> Terms and Conditions</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="wizard">
-                        <div class="content">
-
-                        <form name="signupForm" ng-submit="processForm()" class="p-lg">
-
-                            &lt;!&ndash; our nested state views will be injected here &ndash;&gt;
-                            <div id="form-views" ui-view></div>
-                        </form>
-
-                        </div>
-                        </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
--->
-
-<!--<div class="inmodal">-->
-<!--    <div class="modal-header">
-        <i class="fa fa-person modal-icon"></i>
-        <h1 class="modal-title"> Fill in the following survey</h1>
-                <small class="font-bold">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</small>
-    </div>-->
-
-    <!--<div class="modal-body">-->
-            <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="inmodal survey" aria-hidden="true">
+        <div class="modal-content">
+            <div class="modal-body">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="ibox">
-                           <!-- <div class="ibox-title">
+                            <div class="ibox-title">
                                 <h5>Guest Information</h5>
-                            </div>-->
+                            </div>
+
                             <div class="ibox-content">
-                                <h2>
-                                Form
-                            </h2>
-                                <p>
-                                Please fill out in order to reserve ur spot
-                            </p>
-                                <form id="form" action="#" class="wizard-big">
-                                <h1>Personal</h1>
-                                <fieldset>
-                                    <h2>Personal Information</h2>
-                                    <div class="row">
-                                        <div class="col-lg-8">
-                                            <div class="form-group">
-                                                <label>Full Name</label>
-                                                <input id="name" name="name" type="text" class="form-control required">
+                                <h2>Form</h2>
+                                <p>Please fill out in order to reserve ur spot</p>
+
+                                <form id="form" class="wizard-big">
+
+                                    <h1>Personal</h1>
+                                    <fieldset>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <label>Full Name</label>
+                                                    <input id="fullname" name="fullname" type="text" class="form-control required">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label>Email</label>
+                                                    <input id="email" name="email" type="text" class="form-control required email">
+                                                </div>
+
                                             </div>
-                                            <div class="form-group">
-                                                <label>Email *</label>
-                                                <input id="email" name="email" type="text" class="form-control required email">
-                                            </div>
-                                            <!--<div class="form-group">
-                                                <label>Confirm Password *</label>
-                                                <input id="confirm" name="confirm" type="text" class="form-control required">
-                                            </div>-->
                                         </div>
-                                        <div class="col-lg-4">
-                                            <div class="text-center">
-                                                <div style="margin-top: 20px">
-                                                    <i class="fa fa-sign-in" style="font-size: 180px;color: #e5e5e5 "></i>
+
+                                    </fieldset>
+
+                                    <div class="hr-line-solid"></div>
+                                        <fieldset>
+                                            <h2>Will you be attending our wedding in Colombia?/Vas a asistir a nuestra boda en Colombia?</h2>
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="i-checks"><label> <input id="yes" type="radio" checked="" value="yes" ng-model="attending" name="a"> <i></i> Yes I Do!/Si voy a ir! </label></div>
+                                                    <div class="i-checks"><label> <input id="no" type="radio" value="no" name="a" ng-model="attending"> <i></i>No I am Not!/No voy a ir </label></div>
+                                            </div>
+                                            </div>
+                                    </fieldset>
+
+                                    <div class="hr-line-solid"></div>
+                                        <fieldset>
+                                            <h2>Total number of guests in your party including you? Please indicate numbers of adults and number of children. Número total de personas que vienen contigo (incluyendote). Por favor indique el número de adultos, niños y nombres completos.</h2>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <p class="font-bold">Adults/Adultos</p>
+                                                        <input id="adults" type="text"  name="adults" touch-spin spin-options="spinOption1" ng-model="adults">
+                                                        <div class="form-group" >
+                                                            <div ng-repeat="i in getAdultsCollection(adults) track by $index">
+                                                                <label>Adult {{i}}</label>
+                                                                <input name="fullname" type="text" class="form-control required">
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <p class="font-bold">Kids/Niños</p>
+                                                        <input id="kids" type="text"  name="kids" touch-spin spin-options="spinOption1" ng-model="kids">
+                                                        <div class="form-group" ng-repeat="i in getKidsCollection(kids) track by $index">
+                                                            <label>Kid {{i}}</label>
+                                                            <input name="fullname" type="text" class="form-control required">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                        </fieldset>
+
+                                    <div class="hr-line-solid"></div>
+                                        <fieldset>
+                                            <h2> Do you live outside Colombia? Where? / Vives fuera de Colombia? Donde?</h2>
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="i-checks"><label> <input id="outsidecolombiayes" type="radio" checked="" value="yes" ng-model="livesincolombia" name="a"> <i></i> Yes/Si</label></div>
+                                                    <div class="i-checks"><label> <input id="outsidecolombiano" type="radio" value="no" name="a" ng-model="livesincolombia"> <i></i> No </label></div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
 
-                                </fieldset>
-                                <h1>Attending?</h1>
-                                <fieldset>
-                                    <h2>Will you be attending our wedding in Colombia?/Vas a asistir a nuestra boda en Colombia?</h2>
-                                    <div class="row">
+                                            <div class="row">
 
-                                        <div class="col-sm-12">
-                                            <div class="i-checks"><label> <input type="radio" checked="" value="option1" name="a"> <i></i> Yes I Do!/Si voy a ir! </label></div>
-                                            <div class="i-checks"><label> <input type="radio" value="option2" name="a"> <i></i>No I am Not!/No voy a ir </label></div>
-                                        </div>
-                                        <!--<div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label>First name *</label>
-                                                <input id="names" name="name" type="text" class="form-control required">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Last name *</label>
-                                                <input id="surname" name="surname" type="text" class="form-control required">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label>Email *</label>
-                                                <input id="emails" name="email" type="text" class="form-control required email">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Address *</label>
-                                                <input id="address" name="address" type="text" class="form-control">
-                                            </div>
-                                        </div>-->
-                                    </div>
-                                </fieldset>
+                                                    <h2> When will you be traveling to Colombia? How many days will you be staying?
+                                                        Cuando viajarás a Colombia?  Cuantos dias te quedarás?
+                                                    </h2>
 
-                                <h1>Warning</h1>
-                                <fieldset>
-                                    <div class="text-center" style="margin-top: 120px">
-                                        <h2>You did it Man :-)</h2>
-                                    </div>
-                                </fieldset>
+                                                <div class="col-lg-12">
+                                                        <div class="form-group" id="data_5">
+                                                            <label class="font-normal">Select Dates/Selecciona fechas</label>
+                                                            <div class="input-daterange input-group" id="datepicker">
+                                                                <input type="text" class="input-sm form-control" name="start" value="03/10/2018" />
+                                                                <span class="input-group-addon">to</span>
+                                                                <input type="text" class="input-sm form-control" name="end" value="03/19/2018" />
+                                                            </div>
+                                                        </div>
+                                                </div>
 
-                                <h1>Finish</h1>
-                                <fieldset>
-                                    <h2>Terms and Conditions</h2>
-                                    <input id="acceptTerms" name="acceptTerms" type="checkbox" class="required"> <label for="acceptTerms">I agree with the Terms and Conditions.</label>
-                                </fieldset>
-                            </form>
+
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <h2>Do you have a place to stay in Medellin? If so, where?  / Tienes lugar para alojarte en Medellin? Si es asi, donde?</h2>
+                                                    <div class="form-group">
+                                                        <input placeholder="hotel, airbnb, etc.." id="medellinplace" name="medellinplace" type="text" class="form-control required" ng-model="medellinplace">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <h2> Will be staying at Hotel Porton del Sol in Santa Fe de Antioquia? Te vas a hospedar en el hotel Porton del Sol en Santa Fe de Antioquia? </h2>
+                                                    <div class="i-checks"><label> <input id="portonyes" type="radio" checked="" value="yes" ng-model="stayingatporton" name="a"> <i></i> Yes/Si</label></div>
+                                                    <div class="i-checks"><label> <input id="portonno" type="radio" value="no" name="a" ng-model="stayingatporton"> <i></i> No </label></div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <h2> Do you need us to assist you making a reservation in Hotel Porton del Sol? Necesitas que hagamos una reserva para usted en este hotel?</h2>
+                                                    <div class="i-checks"><label> <input id="portonassistyes" type="radio" checked="" value="yes" ng-model="portonassist" name="a"> <i></i> Yes/Si</label></div>
+                                                    <div class="i-checks"><label> <input id="portonassistno" type="radio" value="no" name="a" ng-model="portonassist"> <i></i> No </label></div>
+                                                </div>
+                                            </div>
+
+                                        </fieldset>
+
+                                    <div class="hr-line-solid"></div>
+                                        <fieldset>
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <h2>Will you be attending our lunch reunion on Thursday 15th at 12:00am? Vas a acompanarnos al almuerzo que realizaremos el Jueves 15?</h2>
+                                                    <div class="i-checks"><label> <input id="lunchyes" type="radio" checked="" value="yes" ng-model="islunching" name="a"> <i></i> Yes/Si</label></div>
+                                                    <div class="i-checks"><label> <input id="lunchno" type="radio" value="no" name="a" ng-model="islunching"> <i></i> No </label></div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+
+                                    <div class="hr-line-solid"></div>
+                                        <fieldset>
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <h2>Will you be needing any of the following services</h2>
+                                                    <div class="i-checks"><label> <input type="checkbox" value="" ng-model="makeup"> <i></i> Makeup </label></div>
+                                                    <div class="i-checks"><label> <input type="checkbox" value="" ng-model="hair"> <i></i> Hair </label></div>
+                                                </div>
+
+                                            </div>
+                                        </fieldset>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-    <!--</div>-->
+        </div>
+    </div>
+
 
 <!--</div>-->
 
-<script>
+<!--</div>-->
+
+<!--<script>
     $(document).ready(function(){
         $("#wizard").steps();
         $("#form").steps({
@@ -269,7 +248,7 @@
             }
         });
     });
-</script>
+</script>-->
 
 <script>
     $(document).ready(function () {
@@ -277,7 +256,138 @@
             checkboxClass: 'icheckbox_square-green',
             radioClass: 'iradio_square-green',
         });
+
+
+        $('#data_1 .input-group.date').datepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            calendarWeeks: true,
+            autoclose: true
+        });
+
+        $('#data_2 .input-group.date').datepicker({
+            startView: 1,
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            autoclose: true,
+            format: "dd/mm/yyyy"
+        });
+
+        $('#data_3 .input-group.date').datepicker({
+            startView: 2,
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            autoclose: true
+        });
+
+        $('#data_4 .input-group.date').datepicker({
+            minViewMode: 1,
+            keyboardNavigation: false,
+            forceParse: false,
+            forceParse: false,
+            autoclose: true,
+            todayHighlight: true
+        });
+
+        $('#data_5 .input-daterange').datepicker({
+            keyboardNavigation: false,
+            forceParse: false,
+            autoclose: true
+        });
+
+
+
+
+
+
+        var divStyle = $('.back-change')[0].style;
+        $('#demo_apidemo').colorpicker({
+            color: divStyle.backgroundColor
+        }).on('changeColor', function(ev) {
+            divStyle.backgroundColor = ev.color.toHex();
+        });
+
+
+
+        $('input[name="daterange"]').daterangepicker();
+
+        $('#reportrange span').html(moment().subtract(29, 'days').format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
+
+        $('#reportrange').daterangepicker({
+            format: 'MM/DD/YYYY',
+            startDate: moment().subtract(29, 'days'),
+            endDate: moment(),
+            minDate: '01/01/2012',
+            maxDate: '12/31/2015',
+            dateLimit: { days: 60 },
+            showDropdowns: true,
+            showWeekNumbers: true,
+            timePicker: false,
+            timePickerIncrement: 1,
+            timePicker12Hour: true,
+            ranges: {
+                'Today': [moment(), moment()],
+                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                'This Month': [moment().startOf('month'), moment().endOf('month')],
+                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+            },
+            opens: 'right',
+            drops: 'down',
+            buttonClasses: ['btn', 'btn-sm'],
+            applyClass: 'btn-primary',
+            cancelClass: 'btn-default',
+            separator: ' to ',
+            locale: {
+                applyLabel: 'Submit',
+                cancelLabel: 'Cancel',
+                fromLabel: 'From',
+                toLabel: 'To',
+                customRangeLabel: 'Custom',
+                daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr','Sa'],
+                monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                firstDay: 1
+            }
+        }, function(start, end, label) {
+            console.log(start.toISOString(), end.toISOString(), label);
+            $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+        });
+
+        $(".select2_demo_1").select2();
+        $(".select2_demo_2").select2();
+        $(".select2_demo_3").select2({
+            placeholder: "Select a state",
+            allowClear: true
+        });
+
+
+        $('.dual_select').bootstrapDualListbox({
+            selectorMinimalHeight: 160
+        });
+
+
     });
+
+    $('.chosen-select').chosen({width: "100%"});
+
+    var basic_slider = document.getElementById('basic_slider');
+
+
+
+    var range_slider = document.getElementById('range_slider');
+
+
+
+    var drag_fixed = document.getElementById('drag-fixed');
+
+
+
+
+
 </script>
 
 

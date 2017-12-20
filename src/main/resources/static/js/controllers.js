@@ -1632,8 +1632,33 @@ function modalDemoCtrl($scope, $uibModal, $http) {
 function ModalSurveyCtrl ($scope, $uibModalInstance,surveyData) {
     $scope.surveyData = surveyData;
 
+    $scope.adults;
+    $scope.kids;
+
+    $scope.a = "05/15/2014";
+    $scope.b = "05/17/2014";
+
+    $scope.getAdultsCollection = function(num) {
+        return new Array(num);
+    }
+
+    $scope.getKidsCollection = function(num) {
+        return new Array(num);
+    }
+
+    $scope.spinOption1 = {
+        min: 0,
+        max: 100,
+        step: 1,
+        boostat: 5,
+        maxboostedstep: 10,
+    };
+
+
     $scope.name;
     $scope.message;
+
+    $scope.attending;
 
 
     $scope.ok = function () {
