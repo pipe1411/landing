@@ -1635,16 +1635,36 @@ function ModalSurveyCtrl ($scope, $uibModalInstance,surveyData) {
     $scope.adults;
     $scope.kids;
 
+    $scope.adultList = [];
+    $scope.kidList = [];
+
+    $scope.finalAdultList = [];
+    $scope.finalKidList = [];
+
     $scope.a = "05/15/2014";
     $scope.b = "05/17/2014";
+    
+    $scope.addAdult = function (adult) {
+        if (adult < $scope.adultList.length) {
+            $scope.adultList.pop();
+            $scope.finalAdultList.pop();
+        }
+        else {
+            $scope.adultList.push(adult);
+        }
 
-    $scope.getAdultsCollection = function(num) {
-        return new Array(num);
-    }
+    };
 
-    $scope.getKidsCollection = function(num) {
-        return new Array(num);
-    }
+    $scope.addKid = function (kid) {
+        if (kid < $scope.kidList.length) {
+            $scope.kidList.pop();
+            $scope.finalKidList.pop();
+        }
+        else {
+            $scope.kidList.push(kid);
+        }
+    };
+
 
     $scope.spinOption1 = {
         min: 0,

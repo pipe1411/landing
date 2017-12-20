@@ -51,24 +51,27 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <p class="font-bold">Adults/Adultos</p>
-                                                        <input id="adults" type="text"  name="adults" touch-spin spin-options="spinOption1" ng-model="adults">
-                                                        <div class="form-group" >
-                                                            <div ng-repeat="i in getAdultsCollection(adults) track by $index">
-                                                                <label>Adult {{i}}</label>
-                                                                <input name="fullname" type="text" class="form-control required">
+                                                        <input id="adults" type="text"  placeholder="0" name="adults" touch-spin spin-options="spinOption1" ng-model="newAdult" ng-change="addAdult(newAdult)">
+                                                        <div class="form-group">
+                                                            <div ng-repeat="adult in adultList" >
+                                                                <label>Adult {{$index}}</label>
+                                                                <input type="text" class="form-control required" ng-model="finalAdultList[adult]">
                                                             </div>
 
                                                         </div>
-
+                                                    {{finalAdultList}}
                                                     </div>
 
                                                     <div class="col-md-6">
                                                         <p class="font-bold">Kids/Niños</p>
-                                                        <input id="kids" type="text"  name="kids" touch-spin spin-options="spinOption1" ng-model="kids">
-                                                        <div class="form-group" ng-repeat="i in getKidsCollection(kids) track by $index">
-                                                            <label>Kid {{i}}</label>
-                                                            <input name="fullname" type="text" class="form-control required">
+                                                        <input id="kids" type="text" placeholder="0" name="kids" touch-spin spin-options="spinOption1" ng-model="newKid" ng-change="addKid(newKid)">
+                                                        <div class="form-group">
+                                                            <div ng-repeat="kid in kidList">
+                                                                <label>Kid {{$index}}</label>
+                                                                <input  type="text" class="form-control required" ng-model="finalKidList[kid]">
+                                                            </div>
                                                         </div>
+                                                        {{finalKidList}}
                                                     </div>
                                                 </div>
 
