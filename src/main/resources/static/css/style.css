@@ -8639,6 +8639,13 @@ body.md-skin {
   padding-bottom: 40px;
 }
 
+.ui-select-choices {
+  position: fixed;
+  top: auto;
+  left: auto;
+  width: 20px;
+}
+
 
 
 
