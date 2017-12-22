@@ -1644,6 +1644,8 @@ function ModalSurveyCtrl ($scope, $uibModalInstance,surveyData) {
         fromDate:"",
         toDate:"",
         medellinPlace:"",
+        stayingAtPorton:"",
+        portonAssist : "",
         guests: {
             adults:[],
             kids:[]

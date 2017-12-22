@@ -124,9 +124,10 @@
                                             <div class="row">
                                                 <div class="col-lg-12">
                                                     <h2> Will be staying at Hotel Porton del Sol in Santa Fe de Antioquia? Te vas a hospedar en el hotel Porton del Sol en Santa Fe de Antioquia? </h2>
-                                                    <div class="i-checks"><label> <input ng-disabled="!isUserAttending()" id="portonyes" type="radio" checked="" value="yes" ng-model="stayingatporton" name="portonyes"> <i></i> Yes/Si</label></div>
-                                                    <div class="i-checks"><label> <input ng-disabled="!isUserAttending()" id="portonno" type="radio" value="no" name="portonyes" ng-model="stayingatporton"> <i></i> No </label></div>
+                                                    <div><label> <input icheck ng-disabled="!isUserAttending()" type="radio" value="yes" name="portonyes" ng-model="guest.stayingAtPorton" > <i></i> Yes/Si</label></div>
+                                                    <div><label> <input icheck ng-disabled="!isUserAttending()" type="radio" value="no"  name="portonyes" ng-model="guest.stayingAtPorton"> <i></i> No </label></div>
                                                 </div>
+                                                {{guest.stayingAtPorton}}
                                             </div>
 
                                             <div class="hr-line-dashed"></div>
@@ -134,9 +135,10 @@
                                             <div class="row">
                                                 <div class="col-lg-12">
                                                     <h2> Do you need us to assist you making a reservation in Hotel Porton del Sol? Necesitas que hagamos una reserva para usted en este hotel?</h2>
-                                                    <div class="i-checks"><label> <input ng-disabled="!isUserAttending()" id="portonassistyes" type="radio" checked="" value="yes" ng-model="portonassist" name="portonassist"> <i></i> Yes/Si</label></div>
-                                                    <div class="i-checks"><label> <input ng-disabled="!isUserAttending()" id="portonassistno" type="radio" value="no" name="portonassist" ng-model="portonassist"> <i></i> No </label></div>
+                                                    <div><label> <input icheck ng-disabled="!isUserAttending()" type="radio" value="yes" name="portonassist" ng-model="guest.portonAssist" > <i></i> Yes/Si</label></div>
+                                                    <div><label> <input icheck ng-disabled="!isUserAttending()" type="radio" value="no"  name="portonassist" ng-model="guest.portonAssist"> <i></i> No </label></div>
                                                 </div>
+                                                {{guest.portonAssist}}
                                             </div>
 
                                         </fieldset>
