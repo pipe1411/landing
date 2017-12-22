@@ -1635,6 +1635,7 @@ function ModalSurveyCtrl ($scope, $uibModalInstance,surveyData) {
     $scope.adults;
     $scope.kids;
 
+    $scope.plates = ["Beef/Carne","Chicken/Pollo","Vegetarian/Vegetariano"];
 
     $scope.guest = {
         name:"",
@@ -1646,9 +1647,12 @@ function ModalSurveyCtrl ($scope, $uibModalInstance,surveyData) {
         medellinPlace:"",
         stayingAtPorton:"",
         portonAssist : "",
+        isLunching:"",
+        makeup:false,
+        hair:false,
         guests: {
-            adults:[],
-            kids:[]
+            adults:[{allergies:"" , name:""}],
+            kids:[{allergies:"" , name:""}]
         }
     };
 
@@ -1675,6 +1679,8 @@ function ModalSurveyCtrl ($scope, $uibModalInstance,surveyData) {
         if (adult < $scope.adultCount.length) {
             $scope.adultCount.pop();
             $scope.guest.guests.adults.pop();
+            if($scope.guest.guests.adults === null)
+                $scope.guest.guests.adults.shift();
         }
         else {
             $scope.adultCount.push(adult);
@@ -1686,6 +1692,8 @@ function ModalSurveyCtrl ($scope, $uibModalInstance,surveyData) {
         if (kid < $scope.kidCount.length) {
             $scope.kidCount.pop();
             $scope.guest.guests.kids.pop();
+            if ( $scope.guest.guests.kids === null)
+                $scope.guest.guests.kids.shift();
         }
         else {
             $scope.kidCount.push(kid);

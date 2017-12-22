@@ -57,7 +57,7 @@
                                                         <div class="form-group">
                                                             <div ng-repeat="adult in adultCount" >
                                                                 <label>Adult {{$index}}</label>
-                                                                <input type="text" class="form-control required" ng-model="guest.guests.adults[adult]" ng-disabled="!isUserAttending()">
+                                                                <input type="text" class="form-control required" ng-model="guest.guests.adults[adult-1].name" ng-disabled="!isUserAttending()">
                                                             </div>
 
                                                         </div>
@@ -70,7 +70,7 @@
                                                         <div class="form-group">
                                                             <div ng-repeat="kid in kidCount">
                                                                 <label>Kid {{$index}}</label>
-                                                                <input  type="text" class="form-control required" ng-model="guest.guests.kids[kid]" ng-disabled="!isUserAttending()">
+                                                                <input  type="text" class="form-control required" ng-model="guest.guests.kids[kid-1].name" ng-disabled="!isUserAttending()">
                                                             </div>
                                                         </div>
                                                         {{guest.guests.kids}}
@@ -78,6 +78,45 @@
                                                 </div>
 
                                         </fieldset>
+
+                                    <div class="hr-line-solid"></div>
+
+                                        <fieldset>
+                                        <div class="row" ng-show="isUserAttending()">
+                                            <div class="col-lg-12">
+                                                <h2>Food Choice</h2>
+                                                <div class="ibox float-e-margins">
+                                                    <div class="ibox-content">
+                                                        <table class="table table-bordered">
+                                                            <thead>
+                                                            <tr>
+                                                                <th>#</th>
+                                                                <th>Name</th>
+                                                                <th>Plate</th>
+                                                                <th>Allergies</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr ng-repeat="invited in guest.guests.adults">
+                                                                <td>{{$index+1}}</td>
+                                                                <td>{{invited.name}}</td>
+                                                                <td style="width: 50%"> <ui-select ng-model="guest.guests.adults[$index].plate" theme="bootstrap">
+                                                                    <ui-select-match placeholder="Selecciona un plato/Select a plate">{{$select.selected}}</ui-select-match>
+                                                                    <ui-select-choices repeat="plate in plates | filter: $select.search">
+                                                                        <div ng-bind-html="plate | highlight: $select.search"></div>
+                                                                    </ui-select-choices>
+                                                                </ui-select></td>
+                                                                <td style="width: 20%"><input type="text" class="form-control" ng-model="guest.guests.adults[$index].allergies"/></td>
+                                                            </tr>
+
+                                                            </tbody>
+                                                        </table>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
 
                                     <div class="hr-line-solid"></div>
                                         <fieldset>
@@ -148,9 +187,10 @@
                                             <div class="row">
                                                 <div class="col-lg-12">
                                                     <h2>Will you be attending our lunch reunion on Thursday 15th at 12:00am? Vas a acompanarnos al almuerzo que realizaremos el Jueves 15?</h2>
-                                                    <div class="i-checks"><label> <input ng-disabled="!isUserAttending()" id="lunchyes" type="radio" checked="" value="yes" ng-model="islunching" name="lunchyes"> <i></i> Yes/Si</label></div>
-                                                    <div class="i-checks"><label> <input ng-disabled="!isUserAttending()" id="lunchno" type="radio" value="no" name="lunchyes" ng-model="islunching"> <i></i> No </label></div>
+                                                    <div><label> <input icheck ng-disabled="!isUserAttending()" type="radio" value="yes" ng-model="guest.isLunching" name="lunchyes"> <i></i> Yes/Si</label></div>
+                                                    <div><label> <input icheck ng-disabled="!isUserAttending()" type="radio" value="no"  ng-model="guest.isLunching" name="lunchyes"> <i></i> No </label></div>
                                                 </div>
+                                                {{guest.isLunching}}
                                             </div>
                                         </fieldset>
 
@@ -159,12 +199,16 @@
                                             <div class="row">
                                                 <div class="col-lg-12">
                                                     <h2>Will you be needing any of the following services</h2>
-                                                    <div class="i-checks"><label> <input ng-disabled="!isUserAttending()" type="checkbox" value="" ng-model="makeup"> <i></i> Makeup </label></div>
-                                                    <div class="i-checks"><label> <input ng-disabled="!isUserAttending()" type="checkbox" value="" ng-model="hair"> <i></i> Hair </label></div>
+                                                    <div><label> <input icheck ng-disabled="!isUserAttending()" type="checkbox" ng-model="guest.makeup"> <i></i> Makeup </label></div>
+                                                    <div><label> <input icheck ng-disabled="!isUserAttending()" type="checkbox" ng-model="guest.hair"> <i></i> Hair </label></div>
                                                 </div>
-
+                                                {{guest.makeup}}
+                                                {{guest.hair}}
                                             </div>
                                         </fieldset>
+
+                                    <div class="hr-line-solid"></div>
+
                                 </form>
                             </div>
                         </div>
@@ -179,86 +223,7 @@
 
 <!--</div>-->
 
-<!--<script>
-    $(document).ready(function(){
-        $("#wizard").steps();
-        $("#form").steps({
-            bodyTag: "fieldset",
-            onStepChanging: function (event, currentIndex, newIndex)
-            {
-                // Always allow going backward even if the current step contains invalid fields!
-                if (currentIndex > newIndex)
-                {
-                    return true;
-                }
 
-                // Forbid suppressing "Warning" step if the user is to young
-                if (newIndex == 3 && Number($("#age").val()) < 18)
-                {
-                    return false;
-                }
-
-                var form = $(this);
-
-                // Clean up if user went backward before
-                if (currentIndex < newIndex)
-                {
-                    // To remove error styles
-                    $(".body:eq(" + newIndex + ") label.error", form).remove();
-                    $(".body:eq(" + newIndex + ") .error", form).removeClass("error");
-                }
-
-                // Disable validation on fields that are disabled or hidden.
-                form.validate().settings.ignore = ":disabled,:hidden";
-
-                // Start validation; Prevent going forward if false
-                return form.valid();
-            },
-            onStepChanged: function (event, currentIndex, priorIndex)
-            {
-                // Suppress (skip) "Warning" step if the user is old enough.
-                if (currentIndex == 2 && Number($("#age").val()) >= 18)
-                {
-                    $(this).steps("next");
-                }
-
-                // Suppress (skip) "Warning" step if the user is old enough and wants to the previous step.
-                if (currentIndex == 2 && priorIndex == 3)
-                {
-                    $(this).steps("previous");
-                }
-            },
-            onFinishing: function (event, currentIndex)
-            {
-                var form = $(this);
-
-                // Disable validation on fields that are disabled.
-                // At this point it's recommended to do an overall check (mean ignoring only disabled fields)
-                form.validate().settings.ignore = ":disabled";
-
-                // Start validation; Prevent form submission if false
-                return form.valid();
-            },
-            onFinished: function (event, currentIndex)
-            {
-                var form = $(this);
-
-                // Submit form input
-                form.submit();
-            }
-        }).validate({
-            errorPlacement: function (error, element)
-            {
-                element.before(error);
-            },
-            rules: {
-                confirm: {
-                    equalTo: "#password"
-                }
-            }
-        });
-    });
-</script>-->
 
 <script>
     $(document).ready(function () {
