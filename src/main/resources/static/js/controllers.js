@@ -1635,8 +1635,33 @@ function ModalSurveyCtrl ($scope, $uibModalInstance,surveyData) {
     $scope.adults;
     $scope.kids;
 
-    $scope.adultList = [];
-    $scope.kidList = [];
+
+    $scope.guest = {
+        name:"",
+        email:"",
+        attending:"yes",
+        livesOutsideColombia:"",
+        fromDate:"",
+        toDate:"",
+        medellinPlace:"",
+        guests: {
+            adults:[],
+            kids:[]
+        }
+    };
+
+
+    $scope.isUserAttending = function () {
+        if ($scope.guest.attending === 'yes')
+            return true;
+        else if ($scope.guest.attending === 'no')
+            return false;
+    };
+
+
+
+    $scope.adultCount = [];
+    $scope.kidCount = [];
 
     $scope.finalAdultList = [];
     $scope.finalKidList = [];
@@ -1645,23 +1670,23 @@ function ModalSurveyCtrl ($scope, $uibModalInstance,surveyData) {
     $scope.b = "05/17/2014";
     
     $scope.addAdult = function (adult) {
-        if (adult < $scope.adultList.length) {
-            $scope.adultList.pop();
-            $scope.finalAdultList.pop();
+        if (adult < $scope.adultCount.length) {
+            $scope.adultCount.pop();
+            $scope.guest.guests.adults.pop();
         }
         else {
-            $scope.adultList.push(adult);
+            $scope.adultCount.push(adult);
         }
 
     };
 
     $scope.addKid = function (kid) {
-        if (kid < $scope.kidList.length) {
-            $scope.kidList.pop();
-            $scope.finalKidList.pop();
+        if (kid < $scope.kidCount.length) {
+            $scope.kidCount.pop();
+            $scope.guest.guests.kids.pop();
         }
         else {
-            $scope.kidList.push(kid);
+            $scope.kidCount.push(kid);
         }
     };
 
@@ -1674,11 +1699,8 @@ function ModalSurveyCtrl ($scope, $uibModalInstance,surveyData) {
         maxboostedstep: 10,
     };
 
-
-    $scope.name;
     $scope.message;
 
-    $scope.attending;
 
 
     $scope.ok = function () {
