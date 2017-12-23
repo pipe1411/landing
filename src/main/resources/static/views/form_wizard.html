@@ -190,6 +190,19 @@
                                         </fieldset>
 
                                     <div class="hr-line-solid"></div>
+
+                                    <fieldset>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <h2>Will you be taking our round trip charter bus to Santa Fe de Antioquia on Thursday March 15?/Vienes con nosotros en el bus?</h2>
+                                                <div><label> <input icheck ng-disabled="!isUserAttending()" type="radio" value="yes" ng-model="guest.busNeeded" name="bus"> <i></i> Yes/Si</label></div>
+                                                <div><label> <input icheck ng-disabled="!isUserAttending()" type="radio" value="no"  ng-model="guest.busNeeded" name="bus"> <i></i> No </label></div>
+                                            </div>
+                                            {{guest.busNeeded}}
+                                        </div>
+                                    </fieldset>
+
+                                    <div class="hr-line-solid"></div>
                                         <fieldset>
                                             <div class="row">
                                                 <div class="col-lg-12">

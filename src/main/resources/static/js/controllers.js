@@ -1650,6 +1650,7 @@ function ModalSurveyCtrl ($scope, $uibModalInstance,surveyData) {
         isLunching:"",
         makeup:false,
         hair:false,
+        busNeeded:"",
         guests: {
             adults:[{allergies:"" , name:""}],
             kids:[{allergies:"" , name:""}]
