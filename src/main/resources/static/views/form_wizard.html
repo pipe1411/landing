@@ -13,7 +13,7 @@
                                 <h2>Form</h2>
                                 <p>Please fill out in order to reserve ur spot</p>
 
-                                <form id="form" class="wizard-big">
+                                <form id="form" ng-submit="ok()" class="wizard-big">
 
                                     <h1>Personal</h1>
                                     <fieldset>
@@ -21,17 +21,18 @@
                                             <div class="col-lg-12">
                                                 <div class="form-group">
                                                     <label>Full Name/Nombre Completo</label>
-                                                    <input id="fullname" name="fullname" type="text" class="form-control required" ng-model="guest.name">
+                                                    <input id="fullname" name="fullname" type="text" class="form-control" required ng-model="guest.name">
                                                 </div>
                                                 {{guest.name}}
                                                 <div class="form-group">
                                                     <label>Email</label>
-                                                    <input id="email" name="email" type="text" class="form-control required email" ng-model="guest.email">
+                                                    <input id="email" name="email" type="email" class="form-control" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required ng-model="guest.email">
+                                                    <span ng-show="form.guest.email.$error.email">Invalid email address.</span>
                                                 </div>
                                                 {{guest.email}}
                                                 <div class="form-group">
                                                     <label>Phone/Telefono</label>
-                                                    <input type="text" class="form-control" data-mask="(999) 999-9999" placeholder="" ng-model="guest.phone">
+                                                    <input type="text" class="form-control" data-mask="(999) 999-9999" required placeholder="" ng-model="guest.phone">
                                                     <span class="help-block">(999) 999-9999</span>
                                                 </div>
                                                 {{guest.phone}}
@@ -46,8 +47,8 @@
 
                                             <div class="row">
                                                 <div class="col-lg-12">
-                                                    <div><label> <input type="radio"  icheck value="yes" ng-model="guest.attending" name="atte" > Accept with Pleasure/ Acepto con mucho gusto </label></div>
-                                                    <div><label> <input type="radio"  icheck value="no"  ng-model="guest.attending" name="atte" > Decline with Regret/ Desafortunadamente No podré asistir </label></div>
+                                                    <div><label> <input type="radio"  icheck value="yes" ng-model="guest.attending" name="atte" required> Accept with Pleasure/ Acepto con mucho gusto </label></div>
+                                                    <div><label> <input type="radio"  icheck value="no"  ng-model="guest.attending" name="atte" required> Decline with Regret/ Desafortunadamente No podré asistir </label></div>
                                                     {{guest.attending}}
                                                 </div>
                                             </div>
@@ -59,11 +60,11 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <p class="font-bold">Adults/Adultos</p>
-                                                        <input id="adults" type="text"  placeholder="0" name="adults" touch-spin spin-options="spinOption1" ng-model="newAdult" ng-change="addAdult(newAdult)" ng-disabled="!isUserAttending()">
+                                                        <input id="adults" type="text"  placeholder="0" name="adults" required touch-spin spin-options="spinOption1" ng-model="newAdult" ng-change="addAdult(newAdult)" ng-disabled="!isUserAttending()">
                                                         <div class="form-group">
                                                             <div ng-repeat="adult in adultCount" >
                                                                 <label>Adult {{$index}}</label>
-                                                                <input type="text" class="form-control required" ng-model="guest.guests.adults[adult-1].name" ng-disabled="!isUserAttending()">
+                                                                <input type="text" class="form-control" required ng-model="guest.guests.adults[adult-1].name" ng-disabled="!isUserAttending()">
                                                             </div>
 
                                                         </div>
@@ -72,11 +73,11 @@
 
                                                     <div class="col-md-6">
                                                         <p class="font-bold">Kids/Niños</p>
-                                                        <input id="kids" type="text" placeholder="0" name="kids" touch-spin spin-options="spinOption1" ng-model="newKid" ng-change="addKid(newKid)" ng-disabled="!isUserAttending()">
+                                                        <input id="kids" type="text" placeholder="0" name="kids" touch-spin required spin-options="spinOption1" ng-model="newKid" ng-change="addKid(newKid)" ng-disabled="!isUserAttending()">
                                                         <div class="form-group">
                                                             <div ng-repeat="kid in kidCount">
                                                                 <label>Kid {{$index}}</label>
-                                                                <input  type="text" class="form-control required" ng-model="guest.guests.kids[kid-1].name" ng-disabled="!isUserAttending()">
+                                                                <input  type="text" class="form-control" ng-model="guest.guests.kids[kid-1].name" ng-disabled="!isUserAttending()">
                                                             </div>
                                                         </div>
                                                         {{guest.guests.kids}}
@@ -112,7 +113,7 @@
                                                                 {{invited.name}}
                                                             </td>
                                                             <td>
-                                                                <ui-select ng-model="guest.guests.adults[$index].plate" theme="bootstrap">
+                                                                <ui-select required ng-model="guest.guests.adults[$index].plate" theme="bootstrap">
                                                                     <ui-select-match placeholder="Selecciona un plato/Select a plate">{{$select.selected}}</ui-select-match>
                                                                     <ui-select-choices repeat="plate in plates">
                                                                         <div ng-bind-html="plate"></div>
@@ -136,11 +137,11 @@
                                             <h2> Do you live outside Colombia? Where? / Vives fuera de Colombia? Donde?</h2>
                                             <div class="row">
                                                 <div class="col-lg-12">
-                                                    <div><label> <input icheck ng-disabled="!isUserAttending()"  type="radio" value="yes" ng-model="guest.livesOutsideColombia" name="livesincolombia"> <i></i> Yes/Si</label></div>
-                                                    <div><label> <input icheck ng-disabled="!isUserAttending()"  type="radio" value="no"  ng-model="guest.livesOutsideColombia" name="livesincolombia"> <i></i> No </label></div>
+                                                    <div><label> <input required icheck ng-disabled="!isUserAttending()"  type="radio" value="yes" ng-model="guest.livesOutsideColombia" name="livesincolombia"> <i></i> Yes/Si</label></div>
+                                                    <div><label> <input required icheck ng-disabled="!isUserAttending()"  type="radio" value="no"  ng-model="guest.livesOutsideColombia" name="livesincolombia"> <i></i> No </label></div>
                                                     </br>
                                                     <div class="form-group">
-                                                        <input ng-disabled="!isUserAttending() || guest.livesOutsideColombia === 'no'" placeholder="Country/Pais" name="country" type="text" class="form-control required" ng-model="guest.country">
+                                                        <input ng-disabled="!isUserAttending() || guest.livesOutsideColombia === 'no'" placeholder="Country/Pais" name="country" type="text" class="form-control" required ng-model="guest.country">
                                                     </div>
                                                 </div>
                                                 {{guest.livesOutsideColombia}}
@@ -155,9 +156,9 @@
                                                         <div class="form-group" id="data_5">
                                                             <label class="font-normal">Select Dates/Selecciona fechas</label>
                                                             <div class="input-daterange input-group" id="datepicker">
-                                                                <input ng-disabled="!isUserAttending() || guest.livesOutsideColombia === 'no'" type="text" class="input-sm form-control" name="start" ng-value="'03/10/2018'" ng-model="guest.fromDate"/>
+                                                                <input ng-disabled="!isUserAttending() || guest.livesOutsideColombia === 'no'" type="text" class="input-sm form-control" required name="start" ng-value="'03/10/2018'" ng-model="guest.fromDate"/>
                                                                 <span class="input-group-addon">to</span>
-                                                                <input ng-disabled="!isUserAttending() || guest.livesOutsideColombia === 'no'" type="text" class="input-sm form-control" name="end" ng-value="'03/19/2018'" ng-model="guest.toDate"/>
+                                                                <input ng-disabled="!isUserAttending() || guest.livesOutsideColombia === 'no'" type="text" class="input-sm form-control" required name="end" ng-value="'03/19/2018'" ng-model="guest.toDate"/>
                                                             </div>
                                                             {{guest.fromDate}} to {{guest.toDate}}
                                                         </div>
@@ -170,7 +171,7 @@
                                                 <div class="col-lg-12">
                                                     <h2>Do you have a place to stay in Medellin? If so, where?  / Tienes lugar para alojarte en Medellin? Si es asi, donde?</h2>
                                                     <div class="form-group">
-                                                        <input ng-disabled="!isUserAttending() || guest.livesOutsideColombia === 'no'" placeholder="hotel, airbnb, etc.." name="medellinplace" type="text" class="form-control required" ng-model="guest.medellinPlace">
+                                                        <input ng-disabled="!isUserAttending() || guest.livesOutsideColombia === 'no'" placeholder="hotel, airbnb, etc.." name="medellinplace" type="text" class="form-control" ng-model="guest.medellinPlace">
                                                     </div>
                                                     {{guest.medellinPlace}}
                                                 </div>
@@ -181,8 +182,8 @@
                                             <div class="row">
                                                 <div class="col-lg-12">
                                                     <h2> Will you be staying at the Hotel Porton del Sol in Santa Fe de Antioquia? Te vas a hospedar en el hotel Porton del Sol en Santa Fe de Antioquia? </h2>
-                                                    <div><label> <input icheck ng-disabled="!isUserAttending()" type="radio" value="yes" name="portonyes" ng-model="guest.stayingAtPorton" > <i></i> Yes/Si</label></div>
-                                                    <div><label> <input icheck ng-disabled="!isUserAttending()" type="radio" value="no"  name="portonyes" ng-model="guest.stayingAtPorton"> <i></i> No </label></div>
+                                                    <div><label> <input icheck required ng-disabled="!isUserAttending()" type="radio" value="yes" name="portonyes" ng-model="guest.stayingAtPorton" > <i></i> Yes/Si</label></div>
+                                                    <div><label> <input icheck required ng-disabled="!isUserAttending()" type="radio" value="no"  name="portonyes" ng-model="guest.stayingAtPorton"> <i></i> No </label></div>
                                                 </div>
                                                 {{guest.stayingAtPorton}}
                                             </div>
@@ -192,8 +193,8 @@
                                             <div class="row">
                                                 <div class="col-lg-12">
                                                     <h2> Do you need us to assist you making a reservation in Hotel Porton del Sol? Necesitas que hagamos una reserva para usted en este hotel?</h2>
-                                                    <div><label> <input icheck ng-disabled="!isUserAttending()" type="radio" value="yes" name="portonassist" ng-model="guest.portonAssist" > <i></i> Yes/Si</label></div>
-                                                    <div><label> <input icheck ng-disabled="!isUserAttending()" type="radio" value="no"  name="portonassist" ng-model="guest.portonAssist"> <i></i> No </label></div>
+                                                    <div><label> <input icheck required ng-disabled="!isUserAttending()" type="radio" value="yes" name="portonassist" ng-model="guest.portonAssist" > <i></i> Yes/Si</label></div>
+                                                    <div><label> <input icheck required ng-disabled="!isUserAttending()" type="radio" value="no"  name="portonassist" ng-model="guest.portonAssist"> <i></i> No </label></div>
                                                 </div>
                                                 {{guest.portonAssist}}
                                             </div>
@@ -206,8 +207,8 @@
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <h2>Will you be taking our round trip charter bus to Santa Fe de Antioquia on Thursday March 15?/Vienes con nosotros en el bus?</h2>
-                                                <div><label> <input icheck ng-disabled="!isUserAttending()" type="radio" value="yes" ng-model="guest.busNeeded" name="bus"> <i></i> Yes/Si</label></div>
-                                                <div><label> <input icheck ng-disabled="!isUserAttending()" type="radio" value="no"  ng-model="guest.busNeeded" name="bus"> <i></i> No </label></div>
+                                                <div><label> <input icheck required ng-disabled="!isUserAttending()" type="radio" value="yes" ng-model="guest.busNeeded" name="bus"> <i></i> Yes/Si</label></div>
+                                                <div><label> <input icheck required ng-disabled="!isUserAttending()" type="radio" value="no"  ng-model="guest.busNeeded" name="bus"> <i></i> No </label></div>
                                             </div>
                                             {{guest.busNeeded}}
                                         </div>
@@ -218,8 +219,8 @@
                                             <div class="row">
                                                 <div class="col-lg-12">
                                                     <h2>Will you be attending our lunch reunion on Thursday 15th at 12:00am? Vas a acompanarnos al almuerzo que realizaremos el Jueves 15?</h2>
-                                                    <div><label> <input icheck ng-disabled="!isUserAttending()" type="radio" value="yes" ng-model="guest.isLunching" name="lunchyes"> <i></i> Yes/Si</label></div>
-                                                    <div><label> <input icheck ng-disabled="!isUserAttending()" type="radio" value="no"  ng-model="guest.isLunching" name="lunchyes"> <i></i> No </label></div>
+                                                    <div><label> <input icheck required ng-disabled="!isUserAttending()" type="radio" value="yes" ng-model="guest.isLunching" name="lunchyes"> <i></i> Yes/Si</label></div>
+                                                    <div><label> <input icheck required ng-disabled="!isUserAttending()" type="radio" value="no"  ng-model="guest.isLunching" name="lunchyes"> <i></i> No </label></div>
                                                 </div>
                                                 {{guest.isLunching}}
                                             </div>
@@ -239,7 +240,10 @@
                                         </fieldset>
 
                                     <div class="hr-line-solid"></div>
-
+                                    <div class="modal-footer">
+                                        <button class="btn btn-white" ng-click="cancel()"> Close </button>
+                                        <button type="submit" class="btn btn-primary"> Submit </button>
+                                    </div>
                                 </form>
                             </div>
                         </div>

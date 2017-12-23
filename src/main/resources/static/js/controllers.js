@@ -1717,7 +1717,8 @@ function ModalSurveyCtrl ($scope, $uibModalInstance,surveyData) {
 /*        $scope.postComment.name = $scope.name;
         $scope.postComment.message = $scope.message;
         $scope.postComment.date = new Date();*/
-        $uibModalInstance.close($scope.postComment);
+        //$uibModalInstance.close($scope.postComment);
+        $uibModalInstance.close();
     };
 
     $scope.cancel = function () {
