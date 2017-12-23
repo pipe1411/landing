@@ -1651,6 +1651,7 @@ function ModalSurveyCtrl ($scope, $uibModalInstance,surveyData) {
         makeup:false,
         hair:false,
         busNeeded:"",
+        phone:"",
         guests: {
             adults:[{allergies:"" , name:""}],
             kids:[{allergies:"" , name:""}]
@@ -1669,10 +1670,7 @@ function ModalSurveyCtrl ($scope, $uibModalInstance,surveyData) {
 
     $scope.adultCount = [];
     $scope.kidCount = [];
-
-    $scope.finalAdultList = [];
-    $scope.finalKidList = [];
-
+    
     $scope.a = "05/15/2014";
     $scope.b = "05/17/2014";
     
