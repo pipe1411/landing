@@ -23,19 +23,16 @@
                                                     <label>Full Name/Nombre Completo</label>
                                                     <input id="fullname" name="fullname" type="text" class="form-control" required ng-model="guest.name">
                                                 </div>
-                                                {{guest.name}}
                                                 <div class="form-group">
                                                     <label>Email</label>
                                                     <input id="email" name="email" type="email" class="form-control" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required ng-model="guest.email">
                                                     <span ng-show="form.guest.email.$error.email">Invalid email address.</span>
                                                 </div>
-                                                {{guest.email}}
                                                 <div class="form-group">
                                                     <label>Phone/Telefono</label>
                                                     <input type="text" class="form-control" data-mask="(999) 999-9999" required placeholder="" ng-model="guest.phone">
                                                     <span class="help-block">(999) 999-9999</span>
                                                 </div>
-                                                {{guest.phone}}
                                             </div>
                                         </div>
 
@@ -49,7 +46,6 @@
                                                 <div class="col-lg-12">
                                                     <div><label> <input type="radio"  icheck value="yes" ng-model="guest.attending" name="atte" required> Accept with Pleasure/ Acepto con mucho gusto </label></div>
                                                     <div><label> <input type="radio"  icheck value="no"  ng-model="guest.attending" name="atte" required> Decline with Regret/ Desafortunadamente No podré asistir </label></div>
-                                                    {{guest.attending}}
                                                 </div>
                                             </div>
                                     </fieldset>
@@ -68,7 +64,6 @@
                                                             </div>
 
                                                         </div>
-                                                    {{guest.guests.adults}}
                                                     </div>
 
                                                     <div class="col-md-6">
@@ -80,7 +75,6 @@
                                                                 <input  type="text" class="form-control" ng-model="guest.guests.kids[kid-1].name" ng-disabled="!isUserAttending()">
                                                             </div>
                                                         </div>
-                                                        {{guest.guests.kids}}
                                                     </div>
                                                 </div>
 
@@ -144,8 +138,6 @@
                                                         <input ng-disabled="!isUserAttending() || guest.livesOutsideColombia === 'no'" placeholder="Country/Pais" name="country" type="text" class="form-control" required ng-model="guest.country">
                                                     </div>
                                                 </div>
-                                                {{guest.livesOutsideColombia}}
-                                                {{guest.country}}
                                             </div>
 
                                             <div class="hr-line-dashed"></div>
@@ -160,7 +152,6 @@
                                                                 <span class="input-group-addon">to</span>
                                                                 <input ng-disabled="!isUserAttending() || guest.livesOutsideColombia === 'no'" type="text" class="input-sm form-control" required name="end" ng-value="'03/19/2018'" ng-model="guest.toDate"/>
                                                             </div>
-                                                            {{guest.fromDate}} to {{guest.toDate}}
                                                         </div>
                                                 </div>
                                             </div>
@@ -173,7 +164,6 @@
                                                     <div class="form-group">
                                                         <input ng-disabled="!isUserAttending() || guest.livesOutsideColombia === 'no'" placeholder="hotel, airbnb, etc.." name="medellinplace" type="text" class="form-control" ng-model="guest.medellinPlace">
                                                     </div>
-                                                    {{guest.medellinPlace}}
                                                 </div>
                                             </div>
 
@@ -185,7 +175,6 @@
                                                     <div><label> <input icheck required ng-disabled="!isUserAttending()" type="radio" value="yes" name="portonyes" ng-model="guest.stayingAtPorton" > <i></i> Yes/Si</label></div>
                                                     <div><label> <input icheck required ng-disabled="!isUserAttending()" type="radio" value="no"  name="portonyes" ng-model="guest.stayingAtPorton"> <i></i> No </label></div>
                                                 </div>
-                                                {{guest.stayingAtPorton}}
                                             </div>
 
                                             <div class="hr-line-dashed"></div>
@@ -196,7 +185,6 @@
                                                     <div><label> <input icheck required ng-disabled="!isUserAttending()" type="radio" value="yes" name="portonassist" ng-model="guest.portonAssist" > <i></i> Yes/Si</label></div>
                                                     <div><label> <input icheck required ng-disabled="!isUserAttending()" type="radio" value="no"  name="portonassist" ng-model="guest.portonAssist"> <i></i> No </label></div>
                                                 </div>
-                                                {{guest.portonAssist}}
                                             </div>
 
                                         </fieldset>
@@ -210,7 +198,6 @@
                                                 <div><label> <input icheck required ng-disabled="!isUserAttending()" type="radio" value="yes" ng-model="guest.busNeeded" name="bus"> <i></i> Yes/Si</label></div>
                                                 <div><label> <input icheck required ng-disabled="!isUserAttending()" type="radio" value="no"  ng-model="guest.busNeeded" name="bus"> <i></i> No </label></div>
                                             </div>
-                                            {{guest.busNeeded}}
                                         </div>
                                     </fieldset>
 
@@ -222,7 +209,6 @@
                                                     <div><label> <input icheck required ng-disabled="!isUserAttending()" type="radio" value="yes" ng-model="guest.isLunching" name="lunchyes"> <i></i> Yes/Si</label></div>
                                                     <div><label> <input icheck required ng-disabled="!isUserAttending()" type="radio" value="no"  ng-model="guest.isLunching" name="lunchyes"> <i></i> No </label></div>
                                                 </div>
-                                                {{guest.isLunching}}
                                             </div>
                                         </fieldset>
 
@@ -234,14 +220,12 @@
                                                     <div><label> <input icheck ng-disabled="!isUserAttending()" type="checkbox" ng-model="guest.makeup"> <i></i> Makeup </label></div>
                                                     <div><label> <input icheck ng-disabled="!isUserAttending()" type="checkbox" ng-model="guest.hair"> <i></i> Hair </label></div>
                                                 </div>
-                                                {{guest.makeup}}
-                                                {{guest.hair}}
                                             </div>
                                         </fieldset>
-
+                                    {{guest}}
                                     <div class="hr-line-solid"></div>
                                     <div class="modal-footer">
-                                        <button class="btn btn-white" ng-click="cancel()"> Close </button>
+                                        <button class="btn btn-white" ng-click="cancel()"> Cancel </button>
                                         <button type="submit" class="btn btn-primary"> Submit </button>
                                     </div>
                                 </form>

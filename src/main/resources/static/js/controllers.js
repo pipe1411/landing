@@ -1557,30 +1557,58 @@ function modalDemoCtrl($scope, $uibModal, $http) {
     };
 
     $scope.surveyData = {};
+
+
+    // $scope.guest = {
+    //     name:"",
+    //     email:"",
+    //     attending:"yes",
+    //     livesOutsideColombia:"",
+    //     fromDate:"",
+    //     toDate:"",
+    //     medellinPlace:"",
+    //     stayingAtPorton:"",
+    //     portonAssist : "",
+    //     isLunching:"",
+    //     makeup:false,
+    //     hair:false,
+    //     busNeeded:"",
+    //     phone:"",
+    //     country:"",
+    //     guests: {
+    //         adults:[{allergies:"" , name:""}],
+    //         kids:[{allergies:"" , name:""}]
+    //     }
+    // };
+    $scope.guest = {};
+
+
+
     $scope.survey = function () {
         $uibModal.open({
             templateUrl: 'views/form_wizard.html',
             controller: ModalSurveyCtrl,
             size: 'lg',
             resolve : {
-                surveyData : function() {
-                    return $scope.surveyData;
+                guest : function() {
+                    return $scope.guest;
                 }
             }
         }).result.then(function (result) {
-            $scope.surveyData = null;
+            $scope.guest = null;
             //$scope.comments.push(result);
-            $scope.surveyData = result;
-            /*$http
-                .post('postComment',$scope.postComment)
+            $scope.guest = result;
+            console.log($scope.guest);
+            $http
+                .post('survey',$scope.guest)
                 .success(function (data) {
                     console.log("success");
 
-                    console.log($scope.comments);
+                    console.log($scope.guest);
                 })
                 .error(function (data, status) {
                     console.log(status);
-                });*/
+                });
             $scope.$apply();
 
         });
@@ -1629,15 +1657,15 @@ function modalDemoCtrl($scope, $uibModal, $http) {
 };
 
 
-function ModalSurveyCtrl ($scope, $uibModalInstance,surveyData) {
-    $scope.surveyData = surveyData;
+function ModalSurveyCtrl ($scope, $uibModalInstance,guest) {
+    $scope.guest = guest;
 
     $scope.adults;
     $scope.kids;
 
     $scope.plates = ["Beef/Carne","Chicken/Pollo","Vegetarian/Vegetariano"];
 
-    $scope.guest = {
+/*    $scope.guest = {
         name:"",
         email:"",
         attending:"yes",
@@ -1657,7 +1685,7 @@ function ModalSurveyCtrl ($scope, $uibModalInstance,surveyData) {
             adults:[{allergies:"" , name:""}],
             kids:[{allergies:"" , name:""}]
         }
-    };
+    };*/
 
 
     $scope.isUserAttending = function () {
@@ -1714,11 +1742,7 @@ function ModalSurveyCtrl ($scope, $uibModalInstance,surveyData) {
 
 
     $scope.ok = function () {
-/*        $scope.postComment.name = $scope.name;
-        $scope.postComment.message = $scope.message;
-        $scope.postComment.date = new Date();*/
-        //$uibModalInstance.close($scope.postComment);
-        $uibModalInstance.close();
+        $uibModalInstance.close($scope.guest);
     };
 
     $scope.cancel = function () {

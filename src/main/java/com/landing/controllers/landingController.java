@@ -2,6 +2,8 @@
 package com.landing.controllers;
 
 import com.landing.domain.PostComment;
+import com.landing.domain.Survey;
+import com.landing.services.AddSurveyService;
 import com.landing.services.PostCommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +27,9 @@ public class landingController {
     @Autowired
     private PostCommentService postCommentService;
 
+    @Autowired
+    private AddSurveyService addSurveyService;
+
     @RequestMapping(value = "/postComment", method = RequestMethod.POST)
     public String addComment(@RequestBody PostComment postComment) {
         postCommentService.savePostComment(postComment);
@@ -42,6 +47,13 @@ public class landingController {
         }
 
         return comments;
+    }
+
+    @RequestMapping(value = "/survey", method = RequestMethod.POST)
+    public String addSurvey(@RequestBody Survey guest) {
+        addSurveyService.addSurvey(guest);
+
+        return "success";
     }
 }
 
