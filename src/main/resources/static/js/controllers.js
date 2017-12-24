@@ -1591,6 +1591,7 @@ function modalDemoCtrl($scope, $uibModal, $http) {
             size: 'lg',
             resolve : {
                 guest : function() {
+                    $scope.guest = null;
                     return $scope.guest;
                 }
             }
@@ -1602,7 +1603,7 @@ function modalDemoCtrl($scope, $uibModal, $http) {
             $http
                 .post('survey',$scope.guest)
                 .success(function (data) {
-                    console.log("success");
+                    console.log("returned from server: " + data);
 
                     console.log($scope.guest);
                 })
@@ -1662,6 +1663,10 @@ function ModalSurveyCtrl ($scope, $uibModalInstance,guest) {
 
     $scope.adults;
     $scope.kids;
+
+
+
+
 
     $scope.plates = ["Beef/Carne","Chicken/Pollo","Vegetarian/Vegetariano"];
 
