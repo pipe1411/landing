@@ -83,7 +83,7 @@
                                     <div class="hr-line-solid"></div>
 
                                         <fieldset>
-                                        <div class="row" ng-show="isUserAttending()">
+<!--                                        <div class="row" ng-show="isUserAttending()">
                                             <div class="col-lg-12">
                                                 <h2>Food Choice</h2>
                                                 <div class="table-responsive">
@@ -123,8 +123,37 @@
                                                     </table>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </fieldset>
+                                        </div>-->
+                                            <div class="row" ng-show="isUserAttending()">
+                                                <div class="col-lg-12">
+                                                    <h2>Food Choice</h2>
+                                                    <div class="panel-body">
+                                                        <div class="panel panel-default" ng-repeat="invited in guest.guests.adults">
+                                                            <div class="panel-heading">
+                                                                <h5 class="panel-title">
+                                                                    <a data-toggle="collapse" data-parent="#accordion" href="#{{$index}}">{{invited.name}}</a>
+                                                                </h5>
+                                                            </div>
+                                                            <div id="{{$index}}" class="panel-collapse collapse in">
+                                                                <div class="panel-body">
+                                                                    <div class="col-lg-6">
+                                                                        <ui-select required ng-model="guest.guests.adults[$index].plate" theme="bootstrap">
+                                                                            <ui-select-match placeholder="Dish/Plato">{{$select.selected}}</ui-select-match>
+                                                                            <ui-select-choices repeat="plate in plates">
+                                                                                <div ng-bind-html="plate"></div>
+                                                                            </ui-select-choices>
+                                                                        </ui-select>
+                                                                    </div>
+                                                                    <div class="col-lg-6">
+                                                                        <input type="text" class="form-control" placeholder="Allergies/Alergias" ng-model="guest.guests.adults[$index].allergies"/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
 
                                     <div class="hr-line-solid"></div>
                                         <fieldset>
