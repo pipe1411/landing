@@ -1605,7 +1605,6 @@ function modalDemoCtrl($scope, $uibModal, $http) {
                 .success(function (data) {
                     console.log("returned from server: " + data);
 
-                    console.log($scope.guest);
                 })
                 .error(function (data, status) {
                     console.log(status);
