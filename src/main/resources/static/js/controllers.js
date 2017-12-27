@@ -1659,7 +1659,7 @@ function modalDemoCtrl($scope, $uibModal, $http) {
 
 
 function ModalSurveyCtrl ($scope, $uibModalInstance,guest) {
-    $scope.guest = guest;
+    //$scope.guest = guest;
 
     $scope.adults;
     $scope.kids;
@@ -1670,7 +1670,7 @@ function ModalSurveyCtrl ($scope, $uibModalInstance,guest) {
 
     $scope.plates = ["Beef/Carne","Chicken/Pollo","Vegetarian/Vegetariano"];
 
-/*    $scope.guest = {
+    $scope.guest = {
         name:"",
         email:"",
         attending:"yes",
@@ -1690,7 +1690,7 @@ function ModalSurveyCtrl ($scope, $uibModalInstance,guest) {
             adults:[{allergies:"" , name:""}],
             kids:[{allergies:"" , name:""}]
         }
-    };*/
+    };
 
 
     $scope.isUserAttending = function () {

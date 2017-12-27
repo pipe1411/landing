@@ -10,12 +10,11 @@
                             </div>
 
                             <div class="ibox-content">
-                                <h2>Guest Survey Form</h2>
-                                <p>Please fill out this survey. Por favor llenar esta pequeña encuesta.</p>
+                                <h2>Please fill out this survey/Por favor llenar esta pequeña encuesta.</h2>
+
 
                                 <form id="form" ng-submit="ok()" class="wizard-big">
-
-                                    <h1>Personal</h1>
+                                    <div class="hr-line-solid"></div>
                                     <fieldset>
                                         <div class="row">
                                             <div class="col-lg-12">
@@ -59,7 +58,7 @@
                                                         <input id="adults" type="text"  placeholder="0" name="adults" required touch-spin spin-options="spinOption1" ng-model="newAdult" ng-change="addAdult(newAdult)" ng-disabled="!isUserAttending()">
                                                         <div class="form-group">
                                                             <div ng-repeat="adult in adultCount" >
-                                                                <label>Adult {{$index}}</label>
+                                                                <label>Adult {{$index+1}}</label>
                                                                 <input type="text" class="form-control" required ng-model="guest.guests.adults[adult-1].name" ng-disabled="!isUserAttending()">
                                                             </div>
 
@@ -71,7 +70,7 @@
                                                         <input id="kids" type="text" placeholder="0" name="kids" touch-spin spin-options="spinOption1" ng-model="newKid" ng-change="addKid(newKid)" ng-disabled="!isUserAttending()">
                                                         <div class="form-group">
                                                             <div ng-repeat="kid in kidCount">
-                                                                <label>Kid {{$index}}</label>
+                                                                <label>Kid {{$index+1}}</label>
                                                                 <input  type="text" class="form-control" required ng-model="guest.guests.kids[kid-1].name" ng-disabled="!isUserAttending()">
                                                             </div>
                                                         </div>
@@ -210,7 +209,6 @@
                                                 </div>
                                             </div>
                                         </fieldset>
-                                    <div class="hr-line-solid"></div>
                                     <div class="modal-footer">
                                         <button class="btn btn-white" ng-click="cancel()"> Cancel </button>
                                         <button type="submit" class="btn btn-primary"> Submit </button>
