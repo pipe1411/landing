@@ -1746,6 +1746,11 @@ function ModalSurveyCtrl ($scope, $uibModalInstance,guest) {
 
 
     $scope.ok = function () {
+        if ($scope.guest.attending === 'yes') {
+            alert("Gracias por llenar esta encuesta, nos vemos en Colombia!");
+        } else if ($scope.guest.attending === 'no') {
+            alert("Sentimos mucho que no nos puedas acompanar en nuestro gran dia :(");
+        }
         $uibModalInstance.close($scope.guest);
     };
 
